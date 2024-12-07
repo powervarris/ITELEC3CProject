@@ -1,0 +1,166 @@
+/* Sidebar Styles */
+#sidebar {
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Default expanded width */
+    height: 100vh;
+    position: fixed;
+    transition: width 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1000;
+}
+
+/* Collapsed Sidebar */
+#sidebar.collapsed {
+    width: 80px; /* Collapsed width */
+}
+
+/* Sidebar Header */
+#sidebar .d-flex.align-items-center {
+    text-align: left;
+    padding-left: 2px;
+    margin-bottom: 5px; /* Reduce the bottom spacing */
+}
+
+#sidebar img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 2px;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+@media (max-width: 1028px) {
+    #sidebar img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+#sidebar-title {
+    color: #000;
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+/* Adjust HR Below Title */
+#sidebar hr:first-of-type {
+    margin: 10px 0;
+}
+
+/* Hide Sidebar Title When Collapsed */
+#sidebar.collapsed #sidebar-title {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    overflow: hidden;
+}
+
+/* Sidebar Links */
+#sidebar .nav-link {
+    font-size: 1rem;
+    padding: 10px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Adjust Icon Alignment */
+#sidebar .nav-link i {
+    min-width: 24px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Sidebar Text */
+#sidebar .nav-link .sidebar-text {
+    display: inline-block;
+    transition: opacity 0.3s ease, visibility 0.3s ease, width 0.3s ease;
+}
+
+/* Hide Text When Collapsed */
+#sidebar.collapsed .nav-link .sidebar-text {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+}
+
+/* Hover Background */
+#sidebar .nav-link:hover {
+    background-color: #000000;
+    color: #ffffff !important;
+}
+
+/* Collapsed Sidebar Hover */
+#sidebar.collapsed .nav-link:hover {
+    background-color: transparent;
+}
+
+#sidebar.collapsed .nav-link:hover i {
+    color: white !important;
+}
+
+/* Logout Section */
+#sidebar .nav-link:last-child {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 0;
+}
+
+/* Logout Button Hover */
+#sidebar .nav-link:last-child:hover {
+    background-color: #000000;
+    color: #ffffff !important;
+}
+
+/* Logout Button Icon */
+#sidebar .nav-link:last-child i {
+    min-width: 24px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Collapsed Logout Button */
+#sidebar.collapsed .nav-link:last-child .sidebar-text {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+}
+
+.nav-link.active {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Main Content Adjustment */
+main {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
+#sidebar.collapsed + main {
+    margin-left: 80px;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 991px) {
+    #sidebar {
+        width: 80px;
+    }
+
+    main {
+        margin-left: 80px;
+    }
+}

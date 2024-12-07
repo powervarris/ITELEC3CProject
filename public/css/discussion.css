@@ -1,0 +1,217 @@
+/* General Body and Typography */
+body {
+    background-color: #f2f4f7; /* Light background */
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Header Styling */
+.forum-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000 !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.forum-header::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: black;
+    margin: 10px auto 0;
+    border-radius: 4px;
+}
+
+/* Sidebar Link Styling */
+.nav-link.sidebar-link {
+    background-color: transparent;
+    color: black;
+    font-weight: 500;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link.sidebar-link.active {
+    background-color: black;
+    color: white !important;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link.sidebar-link:hover {
+    background-color: #f2f4f7;
+    color: black;
+}
+
+/* Tabs Navigation Styling (Scoped Specifically for Tabs) */
+.nav-pills.tab-links .nav-link {
+    color: black;
+    background-color: transparent;
+    border: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.nav-pills.tab-links .nav-link.active {
+    color: black !important;
+    background-color: #f8f9fa !important;
+    font-weight: bold;
+    border-bottom: 2px solid #ffcc00;
+}
+
+.nav-pills.tab-links .nav-link:hover {
+    color: #ffcc00;
+    background-color: transparent;
+}
+
+/* Card Styling */
+.card {
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.card-body div.d-flex {
+    margin-bottom: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Input Field Styling */
+.form-control {
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Button Styling */
+.btn {
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.btn-light {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.btn-light:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    transition: box-shadow 0.2s, background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 3px 6px rgba(0, 123, 255, 0.4);
+}
+
+.btn-link {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.btn-link:hover {
+    color: #0056b3;
+}
+
+/* Image Styling */
+.img-fluid {
+    max-height: 300px;
+    width: auto;
+    object-fit: cover;
+}
+
+img.rounded-circle {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hashtags and List Styling */
+.list-unstyled li {
+    margin-bottom: 0.5rem;
+}
+
+.list-unstyled li span {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #000;
+}
+
+.list-unstyled li small {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* Recommended Topics */
+.badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+}
+
+.badge:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
+}
+
+/* General Responsive Adjustments */
+.nav-pills .nav-link {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .row.g-2 {
+        flex-direction: column;
+    }
+
+    .col-auto {
+        text-align: center;
+    }
+
+    .col-12.d-flex {
+        justify-content: center;
+    }
+
+    .nav-pills .nav-link {
+        padding: 0.5rem 0.75rem;
+    }
+}

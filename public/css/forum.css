@@ -1,0 +1,128 @@
+body {
+    background-color: #f2f4f7;
+}
+
+.forum-container {
+    padding: 20px;
+}
+
+.forum-container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
+    position: relative;
+}
+
+.forum-container h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: black;
+    margin: 10px auto 0;
+    border-radius: 4px;
+}
+
+/* Forum Filters Styles */
+.filters-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.filter-block {
+    display: flex;
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f7f7f7;
+}
+
+.filter-block:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.filter-block .title {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 1.8rem; /* Larger title size */
+    font-weight: bold;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+}
+
+.filter-block.general .title {
+    background-image: url("/images/mewtwo.jpg");
+}
+
+.filter-block.deck .title {
+    background-image: url("/images/charizard.jpg");
+}
+
+.filter-block.pokecard .title {
+    background-image: url("/images/pikachu.jpg");
+}
+
+.filter-block .description {
+    flex: 2;
+    background: #f7f7f7;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .filters-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-block {
+        height: 200px;
+    }
+
+    .filter-block .title {
+        font-size: 1.4rem;
+    }
+
+    .filter-block .description {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .filters-grid {
+        gap: 10px;
+    }
+
+    .filter-block {
+        height: 180px;
+    }
+
+    .filter-block .title {
+        font-size: 1rem;
+    }
+
+    .filter-block .description {
+        font-size: 0.5rem;
+        padding: 8px;
+    }
+}
