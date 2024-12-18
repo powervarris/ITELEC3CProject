@@ -1,7 +1,7 @@
 <div id="sidebar" class="d-flex flex-column p-3">
     <!-- Sidebar Header -->
     <div class="d-flex align-items-center mb-3">
-        <a href="/" class="d-flex align-items-center text-decoration-none">
+        <a href="{{ route('home') }}" class="d-flex align-items-center text-decoration-none">
             <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="me-2 rounded-circle">
             <span id="sidebar-title" class="fs-5 fw-bold">PockétDex</span>
         </a>
@@ -11,8 +11,13 @@
     <!-- Menu -->
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
+            <a href="{{ route('dashboard') }}" class="nav-link sidebar-link {{ Request::routeIs('dashboard') ? 'active' : '' }}">
+                <i class="bi bi-house-door"></i> <span class="sidebar-text">Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{ route('home') }}" class="nav-link sidebar-link {{ Request::routeIs('home') ? 'active' : '' }}">
-                <i class="bi bi-house-door"></i> <span class="sidebar-text">Home</span>
+                <i class="bi bi-house"></i> <span class="sidebar-text">Home</span>
             </a>
         </li>
         <li>
@@ -21,7 +26,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('news') }}" class="nav-link sidebar-link {{ Request::routeIs('news') ? 'active' : '' }}">
+            <a href="{{ route('news.index') }}" class="nav-link sidebar-link {{ Request::routeIs('news') ? 'active' : '' }}">
                 <i class="bi bi-newspaper"></i> <span class="sidebar-text">News</span>
             </a>
         </li>
@@ -40,22 +45,40 @@
                 <i class="bi bi-info-circle"></i> <span class="sidebar-text">About</span>
             </a>
         </li>
-    </ul>    
+    </ul>
     <hr>
 
     <!-- User Authentication Links -->
     <div class="nav-item">
-        <a href="{{ route('profile.show') }}" class="nav-link sidebar-link">
-            <i class="bi bi-person-circle"></i> <span class="sidebar-text">Profile</span>
+        <a href="{{ route('profile.show') }}" class="nav-link sidebar-link {{ Request::routeIs('profile.show') ? 'active' : '' }}">
+            @auth
+                <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="rounded-circle" alt="User Avatar" style="width: 50px; height: 50px;">
+            @else
+                Profile
+            @endauth
         </a>
     </div>
-    <div class="nav-item">
-        <form method="POST" action="{{ route('logout') }}" style="margin: 0;">
-            @csrf
-            <a href="{{ route('logout') }}" class="nav-link sidebar-link"
-               onclick="event.preventDefault(); this.closest('form').submit();">
-                <i class="bi bi-box-arrow-right"></i> <span class="sidebar-text">Logout</span>
+    @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+        <!-- Team Management -->
+        <div class="nav-item">
+            <a href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" class="nav-link sidebar-link {{ Request::routeIs('teams.show') ? 'active' : '' }}">
+                <i class="bi bi-people"></i> <span class="sidebar-text">Team Settings</span>
             </a>
-        </form>
-    </div>    
+        </div>
+    @endif
+    <div class="nav-item">
+        @auth
+            <form method="POST" action="{{ route('logout') }}" style="margin: 0;">
+                @csrf
+                <a href="{{ route('logout') }}" class="nav-link sidebar-link"
+                   onclick="event.preventDefault(); this.closest('form').submit();">
+                    <i class="bi bi-box-arrow-right"></i> <span class="sidebar-text">Logout</span>
+                </a>
+            </form>
+        @else
+            <a href="{{ route('login') }}" class="nav-link sidebar-link">
+                <i class="bi bi-box-arrow-in-right"></i> <span class="sidebar-text">Login</span>
+            </a>
+        @endauth
+    </div>
 </div>

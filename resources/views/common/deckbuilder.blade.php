@@ -10,7 +10,7 @@
     <section class="deck-builder-container">
         <h1>Pokédeck Builder</h1>
         <div class="deck-builder-grid">
-            
+
             <!-- Available Cards (left side) -->
             <div class="cards-selection">
                 <div class="available-cards">
@@ -18,7 +18,7 @@
                     <div class="available-cards-header">
                         <h2>Available Cards</h2>
                     </div>
-                    
+
                     <!-- Search and Filters Section -->
                     <div class="filters">
                         <input type="text" id="searchInput" placeholder="Search for cards..." class="filter-input" oninput="applyFilters()" />
@@ -69,7 +69,7 @@
 @push('scripts')
 <script>
     // Array to keep track of cards added to the deck
-    window.deck = [];  
+    window.deck = [];
 
     // Allow cards to be dropped into the deck area
     window.allowDrop = function(event) {

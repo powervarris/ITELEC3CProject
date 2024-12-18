@@ -66,10 +66,10 @@
     <!-- Highlight Packs Section -->
     <section id="highlightPacks" class="row row-cols-1 row-cols-md-2 g-4">
         @foreach ([
-            ['title' => 'Mewtwo Booster Pack', 'description' => 'This pack contains special cards featuring Mewtwo.', 'image' => 'images/mewtwo.jpg'],
-            ['title' => 'Pikachu Booster Pack', 'description' => 'This pack contains special cards featuring Pikachu.', 'image' => 'images/pikachu.jpg'],
-            ['title' => 'Charizard Booster Pack', 'description' => 'This pack contains special cards featuring Charizard.', 'image' => 'images/charizard.jpg'],
-            ['title' => 'Promo-A Pack', 'description' => 'This pack contains exclusive promo cards.', 'image' => 'images/promo.jpg']
+            ['title' => 'Mewtwo Booster Pack', 'description' => 'This pack contains special cards featuring Mewtwo.', 'image' => 'images/mewtwo.jpg', 'url' => 'https://www.pokemon-zone.com/decks/mewtwo-ex/'],
+            ['title' => 'Pikachu Booster Pack', 'description' => 'This pack contains special cards featuring Pikachu.', 'image' => 'images/pikachu.jpg', 'url' => 'https://www.pokemon-zone.com/decks/pikachu-ex/'],
+            ['title' => 'Charizard Booster Pack', 'description' => 'This pack contains special cards featuring Charizard.', 'image' => 'images/charizard.jpg', 'url' => 'https://www.pokemon-zone.com/decks/charizard-ex/'],
+            ['title' => 'Promo-A Pack', 'description' => 'This pack contains exclusive promo cards.', 'image' => 'images/promo.jpg', 'url' => 'https://www.serebii.net/tcgpocket/promo-a/']
         ] as $pack)
             <div class="col">
                 <div class="card">
@@ -77,12 +77,12 @@
                     <div class="card-overlay">
                         <h5>{{ $pack['title'] }}</h5>
                         <p>{{ $pack['description'] }}</p>
-                        <button class="read-more-btn">Show Pack</button>
+                        <button class="read-more-btn" onclick="window.location.href='{{ $pack['url'] }}'">Show Pack</button>
                     </div>
                 </div>
             </div>
         @endforeach
-    </section>    
+    </section>
 
     <!-- News Section -->
     <section id="newsSection" class="mt-4">

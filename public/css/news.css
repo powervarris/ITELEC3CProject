@@ -104,6 +104,46 @@ body {
     background-color: #c44127;
 }
 
+/* Modal Styles */
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-title {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.modal-body label {
+    font-weight: bold;
+    color: #495057;
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="file"],
+.modal-body input[type="url"],
+.modal-body textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.modal-body .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+
 /* Ensure the layout responds well on smaller screens */
 @media (max-width: 768px) {
     .news-grid {

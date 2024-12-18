@@ -1,0 +1,84 @@
+/* Profile Page Styles */
+body {
+    background-color: #f2f4f7; /* Subtle gray background for contrast */
+}
+
+#profile-page {
+    margin-top: 30px;
+    max-width: 1000px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section {
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd; /* Add subtle border for better structure */
+}
+
+.card-header {
+    background-color: #007bff; /* Vibrant blue header for visibility */
+    color: #fff; /* Ensure white text for contrast */
+    font-weight: bold;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+}
+
+.card-body {
+    padding: 20px;
+    font-size: 16px;
+}
+
+/* Form Styling */
+.form-label {
+    font-weight: bold;
+    color: #333; /* Dark text for input labels */
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ccc; /* Light border for inputs */
+    padding: 10px;
+    font-size: 1rem;
+    color: #333; /* Ensure visible text color */
+    background-color: #fff; /* White background for inputs */
+}
+
+/* Button Styling */
+.btn-save {
+    background-color: #28a745; /* Green save button */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+    background-color: #218838;
+}
+
+/* Profile Photo */
+.profile-photo-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #007bff; /* Blue border to match the theme */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #profile-page {
+        padding: 10px;
+    }
+}
