@@ -64,7 +64,7 @@
                                         Your browser does not support the video tag.
                                     </video>
                                 @endif
-                                <div class="mt-3 d-flex gap-3">
+                                <div class="mt-3 d-flex gap-3 btn-center">
                                     <button class="btn btn-sm btn-link text-primary" onclick="toggleCommentForm({{ $post->id }})">
                                         <i class="bi bi-chat"></i> Comment
                                     </button>

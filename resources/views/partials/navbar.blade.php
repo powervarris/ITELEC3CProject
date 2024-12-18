@@ -10,11 +10,11 @@
 
     <!-- Menu -->
     <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="{{ route('dashboard') }}" class="nav-link sidebar-link {{ Request::routeIs('dashboard') ? 'active' : '' }}">
                 <i class="bi bi-house-door"></i> <span class="sidebar-text">Dashboard</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a href="{{ route('home') }}" class="nav-link sidebar-link {{ Request::routeIs('home') ? 'active' : '' }}">
                 <i class="bi bi-house"></i> <span class="sidebar-text">Home</span>
