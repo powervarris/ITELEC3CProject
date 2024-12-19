@@ -30,7 +30,7 @@
                                     @endauth
                                 </div>
                                 <div class="col">
-                                    <input type="text" name="content" class="form-control" placeholder="What's on your mind about Pokémon?" required />
+                                    <input type="text" name="content" class="form-control" placeholder="What's on your mind about Pokémon?" required maxlength="255" />
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary shadow-sm px-4">Post</button>
@@ -48,7 +48,9 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="d-flex align-items-start">
-                                    <img src="{{ asset('images/mewtwo.jpg') }}" class="rounded-circle me-3" alt="Community Avatar" style="width: 50px; height: 50px;">
+                                    @auth
+                                    <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="rounded-circle me-3" alt="Community Avatar" style="width: 50px; height: 50px;">
+                                    @endauth
                                     <div>
                                         <h6 class="mb-0">{{ $post->user->name }}</h6>
                                         <small class="text-muted">Posted by {{ $post->user->name }} • {{ $post->created_at->diffForHumans() }}</small>
@@ -68,10 +70,7 @@
                                     <button class="btn btn-sm btn-link text-primary" onclick="toggleCommentForm({{ $post->id }})">
                                         <i class="bi bi-chat"></i> Comment
                                     </button>
-                                    <button class="btn btn-sm btn-link text-primary">
-                                        <i class="bi bi-reply"></i> Reply
-                                    </button>
-                                    @if(auth()->id() === $post->user_id)
+                                    @if(auth()->id() === $post->user_id || Auth::user()->role === 'admin')
                                         <form action="{{ route('forum.general.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
                                             @csrf
                                             @method('DELETE')
@@ -100,6 +99,27 @@
                                                 <h6 class="mb-0">{{ $comment->user->name }}</h6>
                                                 <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
                                                 <p class="mt-1">{{ $comment->content }}</p>
+                                                <button class="btn btn-sm btn-link text-primary" onclick="toggleReplyForm({{ $comment->id }})">
+                                                    <i class="bi bi-reply"></i> Reply
+                                                </button>
+                                                @if(auth()->id() === $comment->user_id || Auth::user()->role === 'admin')
+                                                    <form action="{{ route('forum.general.comment.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this comment?');" class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-link text-danger">
+                                                            <i class="bi bi-trash"></i> Delete
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                                @if(auth()->id() === $comment->user_id || Auth::user()->role === 'admin')
+                                                <div id="reply-form-{{ $comment->id }}" style="display: none;">
+                                                    <form action="{{ route('forum.general.comment.store', $post->id) }}" method="POST">
+                                                        @csrf
+                                                        <input type="text" name="content" class="form-control" placeholder="Add a reply" required />
+                                                        <button type="submit" class="btn btn-primary mt-2">Reply</button>
+                                                    </form>
+                                                </div>
+                                                @endif
                                             </div>
                                         </div>
                                     @endforeach
@@ -202,6 +222,15 @@
 
     function toggleCommentForm(postId) {
         var form = document.getElementById('comment-form-' + postId);
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+
+    function toggleReplyForm(commentId) {
+        var form = document.getElementById('reply-form-' + commentId);
         if (form.style.display === 'none') {
             form.style.display = 'block';
         } else {

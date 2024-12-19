@@ -75,7 +75,9 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex align-items-start">
-                                <img src="{{ asset('images/mewtwo.jpg') }}" class="rounded-circle me-3" alt="Community Avatar" style="width: 50px; height: 50px;">
+                                @auth
+                                    <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="rounded-circle me-3" alt="Community Avatar" style="width: 50px; height: 50px;">
+                                @endauth
                                 <div>
                                     <h6 class="mb-0">{{ $post->user->name }}</h6>
                                     <small class="text-muted">Posted by {{ $post->user->name }} • {{ $post->created_at->diffForHumans() }}</small>

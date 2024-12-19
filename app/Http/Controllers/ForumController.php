@@ -156,4 +156,27 @@ class ForumController extends Controller
 
         return redirect()->route('forum.general')->with('success', 'Comment added successfully!');
     }
+
+    public function storeCommentDeck(Request $request, $postId)
+    {
+        $request->validate([
+            'content' => 'required|string|max:255',
+        ]);
+
+        $comment = new Comment();
+        $comment->content = $request->input('content');
+        $comment->user_id = auth()->id();
+        $comment->post_id = $postId;
+        $comment->save();
+
+        return redirect()->route('forum.deck')->with('success', 'Comment added successfully!');
+    }
+
+    public function destroyComment($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+
+        return redirect()->back()->with('success', 'Comment deleted successfully.');
+    }
 }

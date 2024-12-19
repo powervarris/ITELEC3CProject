@@ -39,8 +39,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::put('/forum/card/{post}', [PostController::class, 'updateCard'])->name('forum.card.update');
 
     Route::post('/forum/general/{post}/comment', [ForumController::class, 'storeComment'])->name('forum.general.comment.store');
+    Route::post('/forum/deck/{post}/comment', [ForumController::class, 'storeCommentDeck'])->name('forum.deck.comment.store');
 
     Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+
+    Route::delete('/forum/general/comment/{comment}', [ForumController::class, 'destroyComment'])->name('forum.general.comment.destroy');
+    Route::delete('/news/{news}', [NewsController::class, 'destroy'])->name('news.destroy');
 });
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');

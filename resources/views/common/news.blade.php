@@ -9,6 +9,7 @@
 
 @push('scripts')
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
 
 @section('content')
@@ -28,7 +29,18 @@
                     <div class="news-content">
                         <h3>{{ $news->title }}</h3>
                         <p>{{ $news->description }}</p>
-                        <a href="{{ $news->link }}" target="_blank" class="read-more-btn">Read More</a>
+                        <div class="d-flex justify-content-between mt-2">
+                            <a href="{{ $news->link }}" target="_blank" class="read-more-btn btn btn-primary">Read More</a>
+                        @auth
+                            @if (Auth::user()->role === 'admin')
+                                    <form action="{{ route('news.destroy', $news->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this news item?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             @empty
