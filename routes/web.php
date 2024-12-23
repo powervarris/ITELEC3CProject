@@ -40,6 +40,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::post('/forum/general/{post}/comment', [ForumController::class, 'storeComment'])->name('forum.general.comment.store');
     Route::post('/forum/deck/{post}/comment', [ForumController::class, 'storeCommentDeck'])->name('forum.deck.comment.store');
+    Route::post('/forum/card/{post}/comment', [ForumController::class, 'storeCommentCard'])->name('forum.card.comment.store');
 
     Route::post('/news', [NewsController::class, 'store'])->name('news.store');
 

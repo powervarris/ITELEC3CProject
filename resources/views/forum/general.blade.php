@@ -43,6 +43,15 @@
                         </form>
                     </div>
 
+                    <!-- Tabs Section -->
+                    <ul class="nav nav-pills mb-4 justify-content-start">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="bi bi-file-earmark-text"></i> Posts
+                            </a>
+                        </li>
+                    </ul>
+
                     <!-- Posts Section -->
                     @foreach($posts as $post)
                         <div class="card mb-3">

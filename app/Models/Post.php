@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
-    // Define the relationship with the User model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

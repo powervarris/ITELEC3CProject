@@ -48,26 +48,6 @@
                             <i class="bi bi-file-earmark-text"></i> Posts
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-folder"></i> Resources
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-chat-dots"></i> Discussions
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-calendar-event"></i> Events
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-megaphone"></i> Announcement
-                        </a>
-                    </li>
                 </ul>
 
                 <!-- Posts Section -->
@@ -111,7 +91,7 @@
                                 @endif
                             </div>
                             <div id="comment-form-{{ $post->id }}" style="display: none;">
-                                <form action="{{ route('forum.general.comment.store', $post->id) }}" method="POST">
+                                <form action="{{ route('forum.card.comment.store', $post->id) }}" method="POST">
                                     @csrf
                                     <input type="text" name="content" class="form-control" placeholder="Add a comment" required />
                                     <button type="submit" class="btn btn-primary mt-2">Comment</button>
@@ -139,7 +119,7 @@
                                                 </form>
                                             @endif
                                             <div id="reply-form-{{ $comment->id }}" style="display: none;">
-                                                <form action="{{ route('forum.general.comment.store', $post->id) }}" method="POST">
+                                                <form action="{{ route('forum.card.comment.store', $post->id) }}" method="POST">
                                                     @csrf
                                                     <input type="text" name="content" class="form-control" placeholder="Add a reply" required />
                                                     <button type="submit" class="btn btn-primary mt-2">Reply</button>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\CommentCard;
+use App\Models\CommentDeck;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\PostDeck;
@@ -18,13 +20,13 @@ class ForumController extends Controller
 
     public function indexDeck()
     {
-        $posts = PostDeck::with('user')->latest()->get();
+        $posts = PostDeck::with('user', 'comments.user')->latest()->get();
         return view('forum.deck', compact('posts'));
     }
 
     public function indexCard()
     {
-        $posts = PostCard::with('user')->latest()->get();
+        $posts = PostCard::with('user', 'comments.user')->latest()->get();
         return view('forum.card', compact('posts'));
     }
 
@@ -163,13 +165,28 @@ class ForumController extends Controller
             'content' => 'required|string|max:255',
         ]);
 
-        $comment = new Comment();
+        $comment = new CommentDeck();
         $comment->content = $request->input('content');
         $comment->user_id = auth()->id();
-        $comment->post_id = $postId;
+        $comment->post_deck_id = $postId;
         $comment->save();
 
         return redirect()->route('forum.deck')->with('success', 'Comment added successfully!');
+    }
+
+    public function storeCommentCard(Request $request, $postId)
+    {
+        $request->validate([
+            'content' => 'required|string|max:255',
+        ]);
+
+        $comment = new CommentCard();
+        $comment->content = $request->input('content');
+        $comment->user_id = auth()->id();
+        $comment->post_card_id = $postId;
+        $comment->save();
+
+        return redirect()->route('forum.card')->with('success', 'Comment added successfully!');
     }
 
     public function destroyComment($id)

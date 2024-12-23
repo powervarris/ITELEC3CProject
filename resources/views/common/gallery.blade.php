@@ -135,10 +135,61 @@
     });
 
     // Apply filters on any change
+    let loadedCardIds = new Set();
     function applyFilters() {
         currentPage = 1;
-        document.getElementById('card-grid').innerHTML = '';
-        loadCards(currentPage);
+        const cardGrid = document.getElementById('card-grid');
+        cardGrid.innerHTML = '';
+        loadedCardIds.clear();
+
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+        if (searchInput === '') {
+            loadCards(currentPage);
+            return;
+        }
+
+        fetch(`/gallery`, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const filteredCards = data.cards.filter(card => card.name.toLowerCase().includes(searchInput));
+                if (filteredCards.length > 0) {
+                    filteredCards.forEach((card) => {
+                        if (!loadedCardIds.has(card.id)) {
+                            loadedCardIds.add(card.id);
+                            const cardElement = document.createElement('div');
+                            cardElement.classList.add('card');
+                            cardElement.innerHTML = `
+                            <img src="${card.images?.large || 'https://via.placeholder.com/200x280'}" alt="${card.name}">
+                            <h3>${card.name}</h3>
+                            <p>${card.set?.name || 'Unknown Set'}</p>
+                        `;
+                            cardGrid.appendChild(cardElement);
+                        }
+                    });
+                } else {
+                    const messageDiv = document.getElementById('message');
+                    const messageText = document.getElementById('message-text');
+                    messageText.textContent = "No cards found for your search.";
+                    messageDiv.style.display = 'block';
+                }
+            })
+            .catch((error) => {
+                console.error('Error loading cards:', error);
+                const messageDiv = document.getElementById('message');
+                const messageText = document.getElementById('message-text');
+                messageText.textContent = "Something went wrong. Please try again.";
+                messageDiv.style.display = 'block';
+            });
     }
 
     // Initialize cards on page load

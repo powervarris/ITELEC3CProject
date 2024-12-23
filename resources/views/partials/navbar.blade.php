@@ -36,11 +36,6 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('deckbuilder') }}" class="nav-link sidebar-link {{ Request::routeIs('deckbuilder') ? 'active' : '' }}">
-                <i class="bi bi-tools"></i> <span class="sidebar-text">Deck Builder</span>
-            </a>
-        </li>
-        <li>
             <a href="{{ route('about') }}" class="nav-link sidebar-link {{ Request::routeIs('about') ? 'active' : '' }}">
                 <i class="bi bi-info-circle"></i> <span class="sidebar-text">About</span>
             </a>
@@ -53,6 +48,7 @@
         <a href="{{ route('profile.show') }}" class="nav-link sidebar-link {{ Request::routeIs('profile.show') ? 'active' : '' }}">
             @auth
                 <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="rounded-circle" alt="User Avatar" style="width: 50px; height: 50px;">
+                <span class="sidebar-text">{{ Auth::user()->name }}</span>
             @else
                 Profile
             @endauth

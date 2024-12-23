@@ -1,3 +1,4 @@
+<body style="background-image: url('{{ asset('images/vinyl.jpg') }}'); background-size: cover; background-repeat: no-repeat;">
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -81,23 +82,12 @@
             </div>
         </div>
 
-        <!-- Logout Other Browser Sessions Section -->
-        <div class="profile-section">
-            <div class="card">
-                <div class="card-header">
-                    Logout Other Browser Sessions
-                </div>
-                <div class="card-body">
-                    @livewire('profile.logout-other-browser-sessions-form')
-                </div>
-            </div>
-        </div>
 
         <!-- Delete Account Section (if enabled) -->
         @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
             <div class="profile-section">
                 <div class="card">
-                    <div class="card-header text-danger">
+                    <div class="card-header text-warning">
                         Delete Account
                     </div>
                     <div class="card-body">
@@ -108,3 +98,5 @@
         @endif
     </div>
 </x-app-layout>
+</body>
+
