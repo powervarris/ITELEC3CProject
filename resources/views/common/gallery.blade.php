@@ -24,7 +24,10 @@
                 <select name="type" id="typeFilter" onchange="applyFilters()">
                     <option value="">All Types</option>
                     <option value="Fire">Fire</option>
-                    <option value="Water">Water</option>
+                    <option value="Grass">Grass</option>
+                    <option value="Dragon">Dragon</option>
+                    <option value="Fairy">Fairy</option>
+
                 </select>
 
                 <select name="trainer" id="trainerFilter" onchange="applyFilters()">
