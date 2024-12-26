@@ -35,10 +35,18 @@
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary shadow-sm px-4">Post</button>
                                 </div>
-                                <div class="col-12 d-flex gap-3 mt-2">
-                                    <input type="file" name="image" class="form-control" accept="image/*">
-                                    <input type="file" name="video" class="form-control" accept="video/*">
-                                </div>
+                                <div class="col-12 d-flex flex-column flex-md-row gap-3 mt-2">
+                                    <!-- Image Upload -->
+                                    <div class="input-group-custom">
+                                        <label for="image-upload" class="form-label">Upload Image</label>
+                                        <input type="file" id="image-upload" name="image" class="form-control-custom" accept="image/*">
+                                    </div>
+                                    <!-- Video Upload -->
+                                    <div class="input-group-custom">
+                                        <label for="video-upload" class="form-label">Upload Video</label>
+                                        <input type="file" id="video-upload" name="video" class="form-control-custom" accept="video/*">
+                                    </div>
+                                </div>     
                             </div>
                         </form>
                     </div>

@@ -38,26 +38,28 @@
                 <x-input id="password" type="password" name="password" required autocomplete="current-password" />
             </div>
 
-            <div class="block-remember">
+            <div class="block-remember mt-4">
                 <label for="remember_me" class="flex items-center">
                     <x-checkbox id="remember_me" name="remember" />
                     <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
+            
+            <div class="login-actions items-center justify-between mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                    <a class="forgot-link text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-                <x-button class="btn ms-4">
-                    {{ __('Log in') }}
-                </x-button>
-                <a href="{{ route('register') }}" class="btn btn-secondary ms-4">
-                    {{ __('Register') }}
-                </a>
-            </div>
+                <div class="btn-group">
+                    <a href="{{ route('register') }}" class="btn btn-secondary">
+                        {{ __('Register') }}
+                    </a>
+                    <x-button class="btn btn-primary">
+                        {{ __('Log in') }}
+                    </x-button>
+                </div>
+            </div>                                    
         </form>
     </div>
 </body>

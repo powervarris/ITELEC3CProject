@@ -17,24 +17,12 @@
 }
 
 /* Sidebar Header */
-#sidebar .d-flex.align-items-center {
-    text-align: left;
-    padding-left: 2px;
-    margin-bottom: 5px; /* Reduce the bottom spacing */
-}
-
-#sidebar img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 2px;
+.sidebar-logo {
+    width: 80px; /* Specific size for the header logo */
+    height: 80px;
+    border-radius: 50%; /* Rounded logo */
+    object-fit: cover; /* Proper scaling */
     transition: width 0.3s ease, height 0.3s ease;
-}
-
-@media (max-width: 1028px) {
-    #sidebar img {
-        width: 40px;
-        height: 40px;
-    }
 }
 
 #sidebar-title {
@@ -71,9 +59,8 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Adjust Icon Alignment */
 #sidebar .nav-link i {
-    min-width: 24px;
+    min-width: 24px; /* Match profile picture size */
     text-align: center;
     font-size: 1.2rem;
 }
@@ -97,13 +84,28 @@
     color: #ffffff !important;
 }
 
-/* Collapsed Sidebar Hover */
-#sidebar.collapsed .nav-link:hover {
-    background-color: transparent;
+/* Profile Picture */
+.profile-picture {
+    width: 24px; /* Match menu icon size */
+    height: 24px;
+    border-radius: 50%; /* Circular profile picture */
+    object-fit: cover; /* Ensure proper scaling */
+    margin-right: 10px; /* Space between picture and text */
+    transition: width 0.3s ease, height 0.3s ease;
 }
 
-#sidebar.collapsed .nav-link:hover i {
-    color: white !important;
+/* Collapsed Sidebar Profile Picture */
+#sidebar.collapsed .profile-picture {
+    width: 20px; /* Smaller size for collapsed sidebar */
+    height: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .profile-picture {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 /* Logout Section */
@@ -123,20 +125,7 @@
     color: #ffffff !important;
 }
 
-/* Logout Button Icon */
-#sidebar .nav-link:last-child i {
-    min-width: 24px;
-    text-align: center;
-    font-size: 1.2rem;
-}
-
-/* Collapsed Logout Button */
-#sidebar.collapsed .nav-link:last-child .sidebar-text {
-    opacity: 0;
-    visibility: hidden;
-    width: 0;
-}
-
+/* Active Link */
 .nav-link.active {
     background-color: #000000 !important;
     color: #ffffff !important;
@@ -163,4 +152,47 @@ main {
     main {
         margin-left: 80px;
     }
+}
+
+/* General Button Styling */
+button {
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Cancel Button Styling */
+.cancel-btn {
+    background-color: #6c757d; /* Gray background */
+    color: black; /* White text */
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.cancel-btn:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+}
+
+/* Danger Button Styling */
+.delete-account-btn {
+    background-color: #dc3545; /* Red color for danger */
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.delete-account-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: scale(1.05); /* Slight zoom */
+}
+
+.delete-account-btn:disabled {
+    background-color: #e2e3e5; /* Gray background for disabled state */
+    color: #6c757d; /* Muted text */
+    cursor: not-allowed;
 }

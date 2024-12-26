@@ -2,7 +2,7 @@
     <!-- Sidebar Header -->
     <div class="d-flex align-items-center mb-3">
         <a href="{{ route('home') }}" class="d-flex align-items-center text-decoration-none">
-            <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="me-2 rounded-circle">
+            <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="sidebar-logo me-2">
             <span id="sidebar-title" class="fs-5 fw-bold">PockétDex</span>
         </a>
     </div>
@@ -47,7 +47,7 @@
     <div class="nav-item">
         <a href="{{ route('profile.show') }}" class="nav-link sidebar-link {{ Request::routeIs('profile.show') ? 'active' : '' }}">
             @auth
-                <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="rounded-circle" alt="User Avatar" style="width: 50px; height: 50px;">
+                <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="profile-picture">
                 <span class="sidebar-text">{{ Auth::user()->name }}</span>
             @else
                 Profile

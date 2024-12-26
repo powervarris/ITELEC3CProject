@@ -12,11 +12,11 @@
             {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
         </div>
 
-        <div class="mt-5">
-            <x-danger-button wire:click="confirmUserDeletion" wire:loading.attr="disabled">
+        <div class="mt-5 d-flex justify-content-center">
+            <x-danger-button class="delete-account-btn" wire:click="confirmUserDeletion" wire:loading.attr="disabled">
                 {{ __('Delete Account') }}
             </x-danger-button>
-        </div>
+        </div>        
 
         <!-- Delete User Confirmation Modal -->
         <x-dialog-modal wire:model.live="confirmingUserDeletion">
@@ -40,14 +40,18 @@
             </x-slot>
 
             <x-slot name="footer">
-                <x-secondary-button wire:click="$toggle('confirmingUserDeletion')" wire:loading.attr="disabled">
-                    {{ __('Cancel') }}
-                </x-secondary-button>
-
-                <x-danger-button class="ms-3" wire:click="deleteUser" wire:loading.attr="disabled">
-                    {{ __('Delete Account') }}
-                </x-danger-button>
-            </x-slot>
+                <div class="d-flex justify-content-end">
+                    <!-- Cancel Button -->
+                    <x-secondary-button class="cancel-btn" wire:click="$toggle('confirmingUserDeletion')" wire:loading.attr="disabled">
+                        {{ __('Cancel') }}
+                    </x-secondary-button>
+            
+                    <!-- Delete Button -->
+                    <x-danger-button class="ms-3 delete-account-btn" wire:click="deleteUser" wire:loading.attr="disabled">
+                        {{ __('Delete Account') }}
+                    </x-danger-button>
+                </div>
+            </x-slot>            
         </x-dialog-modal>
     </x-slot>
 </x-action-section>

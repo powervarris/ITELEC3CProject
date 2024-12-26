@@ -36,7 +36,7 @@
                     <strong>Tips and Tricks:</strong> Improve your gameplay with expert strategies and deck-building advice.
                 </div>
                 <div class="offer-item">
-                    <strong>Deck Builder:</strong> Create and customize your perfect Pokémon TCG decks.
+                    <strong>Future Deck Builder:</strong> Create and customize your perfect Pokémon TCG decks.
                 </div>
             </div>
         </div>
